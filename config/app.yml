@@ -1,0 +1,2 @@
+db:
+  uri: 'mysql+pymysql://root:typeshi@localhost/dblab3'
