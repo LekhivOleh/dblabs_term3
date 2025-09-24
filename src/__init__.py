@@ -1,16 +1,19 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import pymysql
+from flasgger import Swagger
 import yaml
+from dotenv import load_dotenv
+import os
 
 db = SQLAlchemy()
 
+load_dotenv()
+db_uri = os.getenv("DB_URI")
 
 def create_app():
     app = Flask(__name__)
-    with open('config/app.yml', 'r') as config_file:
-        config = yaml.safe_load(config_file)
-    app.config['SQLALCHEMY_DATABASE_URI'] = config['db']['uri']
+    Swagger(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 
     db.init_app(app)
 
