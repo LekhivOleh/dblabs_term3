@@ -1,14 +1,13 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flasgger import Swagger
-import yaml
 from dotenv import load_dotenv
 import os
 
 db = SQLAlchemy()
 
 load_dotenv()
-db_uri = os.getenv("DB_URI")
+db_uri = os.getenv("db-uri") or os.getenv("DB_URI")
 
 def create_app():
     app = Flask(__name__)
