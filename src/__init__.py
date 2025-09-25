@@ -13,6 +13,9 @@ db_uri = (
     or os.getenv("SQLALCHEMY_DATABASE_URI")
 )
 
+if not db_uri:
+    raise RuntimeError("db-uri is not read correctly")
+
 def create_app():
     app = Flask(__name__)
     Swagger(app)
