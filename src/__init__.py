@@ -37,7 +37,7 @@ def create_app():
 
     @app.route('/')
     def hello_world():
-        return 'Hello, World! update'
+        return 'Hello, World! update again'
 
     @app.route('/ping')
     def ping():
